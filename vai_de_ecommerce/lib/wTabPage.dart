@@ -12,6 +12,7 @@ import 'wCreditCard.dart';
 import 'wButton.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart';
 
 class TabPage extends StatefulWidget {
   @override
@@ -35,12 +36,30 @@ class _TabPageState extends State<TabPage> {
   ];
 
   List<Product> products = [
-    new Product(url: "assets/product1.png", title: "PLACA NVIDIA 5432X",
-        desc: "Ideal para seus jogos", value: 5899.99, favorite: true),
-    new Product(url:"assets/product2.png", title:"TÊNIS NIKE AIR PLUS", desc:"Mais conforto para seu esporte",
-        value: 1359.99, favorite: false),
-    new Product(url:"assets/product3.png", title:"XBOX MAX",
-        desc: "Mais desempenho e qualidade", value: 12899.99, favorite: true),
+    new Product(
+        url: "assets/product1.png",
+        title: "PLACA NVIDIA 5432X",
+        desc: "Ideal para seus jogos",
+        value: 5899.99,
+        favorite: true),
+    new Product(
+        url: "assets/product2.png",
+        title: "TÊNIS NIKE AIR PLUS",
+        desc: "Mais conforto para seu esporte",
+        value: 1359.99,
+        favorite: false),
+    new Product(
+        url: "assets/product3.png",
+        title: "XBOX MAX",
+        desc: "Mais desempenho e qualidade",
+        value: 12899.99,
+        favorite: true),
+    new Product(
+        url: "assets/moyses.jpg",
+        title: "Livro Moyses",
+        desc: "Livro de qualidade",
+        value: 79.99,
+        favorite: true),
   ];
 
   @override
@@ -118,7 +137,6 @@ class _TabPageState extends State<TabPage> {
                 text: 'Sheldon',
               )
                */
-
             ],
             selectedIndex: selectedIndex,
             onTabChange: (index) {
@@ -153,14 +171,23 @@ class _TabPageState extends State<TabPage> {
               Container(
                 width: 300,
                 height: 150,
-                child: wText(text: "Ecommerce, tudo o que você procura", color: Colors.teal,topPadding: 20,bottomPadding: 20, leftPadding: 20, fontHeight: 22),
+                child: wText(
+                    text: "Ecommerce, tudo o que você procura",
+                    color: Colors.teal,
+                    topPadding: 20,
+                    bottomPadding: 20,
+                    leftPadding: 20,
+                    fontHeight: 22),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 20),
                 child: wRowSearch(),
               ),
-              wText(text: "Mais vendidos", color: Colors.teal, leftPadding: 20, fontHeight: 20),
+              wText(
+                  text: "Mais vendidos",
+                  color: Colors.teal,
+                  leftPadding: 20,
+                  fontHeight: 20),
               wCardProduct(products, context)
             ],
           ),
@@ -171,153 +198,169 @@ class _TabPageState extends State<TabPage> {
         return Scaffold(
           body: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    color: Colors.teal,
-                    height: 150,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        wText(text: "Total = ${cart.totalPrice}", color: Colors.white, fontHeight: 20),
-                        wButton(
-                            height: 50,
-                            width: 220,
-                            icon: Icons.shopping_cart,
-                            colorIcon: Colors.teal,
-                            sizeText: 18,
-                            colorText: Colors.teal,
-                            color: Colors.white,
-                            text: "Finalizar compra",
-                            onTap: () {
-                              // Navigator.pushNamed(context, '/');
-                              setState(() {
-                                selectedIndex = 2;
-                                //badge = badge + 1;
-                              });
-                              controller.jumpToPage(2);
-                              cart.removeAll();
-                            }
-                        )
-                        /*ElevatedButton(
-                            onPressed: , child: Text("Finalizar compra"))*/
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 400,
-                    child: ListView.builder(
-                      itemCount: cart.getQuantity(),
-                      itemBuilder: (context, index) => ListTile(
-                        leading: Icon(Icons.airplay_rounded),
-                        title: Text(cart.products[index].title),
-                        trailing: IconButton(
-                          icon: Icon(Icons.remove_circle_outlined),
-                          onPressed: () {
-                            cart.remove(cart.products[index]);
-                          },
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )),
-        );
-
-      case 2:
-      return wCreditCard();
-
-      case 3:
-      return Column(
-        children: [
-          Stack(
-            alignment: AlignmentDirectional.bottomCenter,
-            clipBehavior: Clip.none,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Text("s"),
-                  decoration: BoxDecoration(
-                    /* borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50.0),
-                          bottomRight: Radius.circular(50.0)),*/
-                    color: Colors.teal,
-                  )),
-              Positioned(
-                bottom: -80,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://sooxt98.space/content/images/size/w100/2019/01/profile.png',
-                  ),
-                  radius: 80,
-                ),
-              )
-            ],
-          )
-        ],
-      );
-
-    /*MultiProvider(
-          providers: [ChangeNotifierProvider(create: (context) => CartModel())],
-          child: Consumer<CartModel>(
-            builder: (context, cart, child) {
-              return Scaffold(
-                body: Center(
-                    child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                color: Colors.teal,
+                height: 150,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 32),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                    Container(
-                      color: Colors.teal,
+                      wText(
+                          text: "Total = ${cart.totalPrice.toStringAsFixed(2)}",
+                          color: Colors.white,
+                          fontHeight: 20),
+                      wButton(
+                          height: 50,
+                          width: 160,
+                          icon: Icons.shopping_cart,
+                          colorIcon: Colors.teal,
+                          sizeText: 18,
+                          colorText: Colors.teal,
+                          color: Colors.white,
+                          text: "COMPRAR",
+                          onTap: () {
+                            // Navigator.pushNamed(context, '/');
+                            setState(() {
+                              selectedIndex = 2;
+                              //badge = badge + 1;
+                            });
+                            controller.jumpToPage(2);
+                            cart.removeAll();
+                          })
+                      /*ElevatedButton(
+                              onPressed: , child: Text("Finalizar compra"))*/
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: cart.getQuantity() == 0 ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Lottie.network("https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"),
+                        wText(
+                          text: "Não há itens no carrinho",
+                          color: Colors.teal,
+                          fontHeight: 25,
+                        ),
+                      ],
+                    )
+                ):ListView.builder(
+                  itemCount: cart.getQuantity(),
+                  itemBuilder: (context, index) => Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        /*boxShadow: [
+                          BoxShadow(
+                              color: Colors.blueGrey,
+                              blurRadius: 8,
+                              spreadRadius: 1,
+                          ),
+                        ],*/
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.teal,
+                      ),
+                      width: double.infinity,
                       height: 150,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Total = ${cart.totalPrice}"),
-                          ElevatedButton(
-                              onPressed: () {
-                                cart.removeAll();
-                              }, child: Text("Finalizar compra"))
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Image.asset(
+                              cart.products[index].url,
+                              width: 120,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              wText(
+                                text: cart.products[index].title,
+                              color: Colors.white,
+                                fontHeight: 15,
+                              ),
+                              Text("cor"),
+                              Text("5 unid.")
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              wButton(
+                                  color: Colors.white,
+                                  height: 50,
+                                  sizeIcon: 30,
+                                  icon: Icons.remove_red_eye,
+                                  colorIcon: Colors.teal,
+                                  onTap: () {
+                                    Navigator.pushNamed(context, '/product', arguments: cart.products[index]);
+                                  }),
+                              wButton(
+                                  color: Colors.white,
+                                  height: 50,
+                                  sizeIcon: 30,
+                                  icon: Icons.delete,
+                                  colorIcon: Colors.red,
+                                  onTap: () {
+                                    cart.remove(cart.products[index]);
+                                  }),
+                            ],
+                          )
+
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          var cart = context.read<CartModel>();
-                          cart.add(Product(
-                              "https://a-static.mlcdn.com.br/618x463/iphone-12-apple-64gb-azul-tela-61-12mp-ios/magazineluiza/231147600/9042be45286cf90a982db47daadfcaeb.jpg",
-                              faker.internet.userName(),
-                              faker.lorem.sentence(),
-                              43,
-                              true));
-                        },
-                        child: child),
-                    Container(
-                      height: 400,
-                      child: ListView.builder(
-                        itemCount: cart.getQuantity(),
-                        itemBuilder: (context, index) => ListTile(
-                          leading: Icon(Icons.airplay_rounded),
-                          title: Text(cart.products[index].title!),
-                          trailing: IconButton(
-                            icon: Icon(Icons.remove_circle_outlined),
-                            onPressed: () {
-                              cart.remove(cart.products[index]);
-                            },
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                )),
-              );
-            },
-          ),
-        );*/
+                  ),
+                ),
+              )
+            ],
+          )),
+        );
+
+      case 2:
+        return wCreditCard();
+
+      case 3:
+        return Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                    width: double.infinity,
+                    height: 200,
+                    child: Text("s"),
+                    decoration: BoxDecoration(
+                      /* borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(50.0),
+                          bottomRight: Radius.circular(50.0)),*/
+                      color: Colors.teal,
+                    )),
+                Positioned(
+                  bottom: -80,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      'https://sooxt98.space/content/images/size/w100/2019/01/profile.png',
+                    ),
+                    radius: 80,
+                  ),
+                )
+              ],
+            )
+          ],
+        );
       default:
         return body;
     }
@@ -335,7 +378,10 @@ class _TabPageState extends State<TabPage> {
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(5)),
             child: wTextFormField(
-                hint: "O que deseja?", icon: Icons.search_rounded,sizeIcon: 30,),
+              hint: "O que deseja?",
+              icon: Icons.search_rounded,
+              sizeIcon: 30,
+            ),
             width: 250,
             height: 50,
           ),
@@ -405,6 +451,7 @@ class _TabPageState extends State<TabPage> {
        */
     );
   }
+
   GButton buildGButton(String text, IconData icon) {
     return GButton(
       gap: gap,

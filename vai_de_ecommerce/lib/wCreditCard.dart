@@ -82,7 +82,7 @@ class wCreditCardState extends State<wCreditCard> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
                         child: wButton(
-                          text: "COMPRAR",
+                          text: "FINALIZAR COMPRA",
                           height: 50,
                           width: double.infinity,
                           icon: Icons.shopping_cart,
@@ -92,7 +92,7 @@ class wCreditCardState extends State<wCreditCard> {
                               //print(res.body);
                               Produto p1 = Produto.fromJson(jsonDecode(res.body));
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(content: Text("s")));
+                                  .showSnackBar(SnackBar(content: Text("Compra efetuada com sucesso...")));
                           },
                         )
                       ),

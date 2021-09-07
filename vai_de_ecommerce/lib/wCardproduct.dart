@@ -13,6 +13,7 @@ Widget wCardProduct(List<Product> products, BuildContext context) {
       wCard(products[0], context),
       wCard(products[1], context),
       wCard(products[2], context),
+      wCard(products[3], context),
     ]
     ),
   );
@@ -53,7 +54,7 @@ Card wCard(Product p, BuildContext context) {
                 height: 150,
                 child: Image.asset(
                   p.url,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

@@ -35,7 +35,7 @@ class routeLogin extends StatelessWidget {
             gradient: LinearGradient(
                 begin: AlignmentDirectional.topCenter,
                 end: AlignmentDirectional.bottomCenter,
-                colors: [Colors.blueAccent,Colors.blueGrey])),
+                colors: [Colors.black,Colors.black])),
       ),
     );
   }
