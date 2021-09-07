@@ -7,16 +7,22 @@ class wTextFormField extends StatelessWidget {
   //final String? Function(String?)? validator;
   //TextEditingController _controller = TextEditingController();
   TextEditingController _controller = TextEditingController();
+  TextInputType keyboardType;
 
-
-  wTextFormField({Key ? key, this.hint = "Default hint", this.icon = Icons.broken_image_outlined, this.sizeIcon = 15}): super(key: key);
+  wTextFormField(
+      {Key? key,
+      this.keyboardType = TextInputType.visiblePassword,
+      this.hint = "Default hint",
+      this.icon = Icons.broken_image_outlined,
+      this.sizeIcon = 15})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _controller,
       cursorColor: Colors.black,
-      keyboardType: TextInputType.visiblePassword,
+      keyboardType: keyboardType,
       decoration: new InputDecoration(
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
@@ -30,10 +36,9 @@ class wTextFormField extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15),
             child: Icon(icon),
           )),
-          validator: (value){
-            if(value!.isEmpty || value == null)
-              return "Campo não pode ser vazio!";
-          },
+      validator: (value) {
+        if (value!.isEmpty || value == null) return "Campo não pode ser vazio!";
+      },
     );
   }
 }
