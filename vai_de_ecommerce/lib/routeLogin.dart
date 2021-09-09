@@ -20,7 +20,7 @@ class routeLogin extends StatelessWidget {
               child: Text(
                 "Ecommerce",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 30,
                     fontWeight: FontWeight.bold
                 ),
@@ -30,11 +30,7 @@ class routeLogin extends StatelessWidget {
         ),
         
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: AlignmentDirectional.topCenter,
-                end: AlignmentDirectional.bottomCenter,
-                colors: [Colors.black,Colors.black]
-            )
+          color: Colors.grey[300]
         ),
       ),
     );
