@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:vai_de_ecommerce/wButton.dart';
-import 'package:vai_de_ecommerce/wFormlogin.dart';
-import 'wTextFormField.dart';
+import 'package:vai_de_ecommerce/WFormlogin.dart';
 
-class routeLogin extends StatelessWidget {
-  const routeLogin({Key? key}) : super(key: key);
+class RouteLogin extends StatelessWidget {
+  const RouteLogin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +22,7 @@ class routeLogin extends StatelessWidget {
                 ),
               ),
             ),
-            wFormLogin()],
+            WFormLogin()],
         ),
         
         decoration: BoxDecoration(

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
+class WText extends StatelessWidget {
+  final String text;
+  final Color color;
+  final double topPadding, rightPadding, bottomPadding, leftPadding, fontHeight;
 
-class wText extends StatelessWidget {
-  String text;
-  Color color;
-  double topPadding, rightPadding, bottomPadding, leftPadding, fontHeight;
-
-  wText({Key? key, this.text = "Default", this.color = Colors.white, this.topPadding=0, this.rightPadding=0, this.bottomPadding=0, this.leftPadding=0, this.fontHeight=12}) : super(key: key);
+  WText({Key? key, this.text = "Default", this.color = Colors.white, this.topPadding=0, this.rightPadding=0, this.bottomPadding=0, this.leftPadding=0, this.fontHeight=12}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

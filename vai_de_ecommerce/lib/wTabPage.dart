@@ -1,15 +1,13 @@
 import 'package:badges/badges.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:vai_de_ecommerce/pCartModel.dart';
-import 'package:vai_de_ecommerce/wTextFormField.dart';
+import 'package:vai_de_ecommerce/PCartModel.dart';
+import 'package:vai_de_ecommerce/WTextFormField.dart';
 import 'Product.dart';
-import 'wCardproduct.dart';
-import 'wText.dart';
-import 'wCreditCard.dart';
-import 'wButton.dart';
+import 'WCardproduct.dart';
+import 'WText.dart';
+import 'WCreditCard.dart';
+import 'WButton.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:lottie/lottie.dart';
@@ -171,7 +169,7 @@ class _TabPageState extends State<TabPage> {
               Container(
                 width: 300,
                 height: 150,
-                child: wText(
+                child: WText(
                     text: "Ecommerce, tudo o que você procura",
                     color: Colors.teal,
                     topPadding: 20,
@@ -183,7 +181,7 @@ class _TabPageState extends State<TabPage> {
                 padding: const EdgeInsets.only(bottom: 20),
                 child: wRowSearch(),
               ),
-              wText(
+              WText(
                   text: "Mais vendidos",
                   color: Colors.teal,
                   leftPadding: 20,
@@ -193,7 +191,6 @@ class _TabPageState extends State<TabPage> {
           ),
         ]);
       case 1:
-        Faker faker = Faker();
         CartModel cart = Provider.of<CartModel>(context);
         return Scaffold(
           body: Center(
@@ -210,11 +207,11 @@ class _TabPageState extends State<TabPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      wText(
-                          text: "Total = ${cart.totalPrice.toStringAsFixed(2)}",
+                      WText(
+                          text: "Total: R\$:${cart.totalPrice.toStringAsFixed(2).replaceAll(".", ",")}",
                           color: Colors.white,
                           fontHeight: 20),
-                      wButton(
+                      WButton(
                           height: 50,
                           width: 160,
                           icon: Icons.shopping_cart,
@@ -244,8 +241,9 @@ class _TabPageState extends State<TabPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Lottie.network("https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"),
-                        wText(
+                        Lottie.network("https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json", height: 150),
+                        WText(
+                          topPadding: 15,
                           text: "Não há itens no carrinho",
                           color: Colors.teal,
                           fontHeight: 25,
@@ -285,7 +283,7 @@ class _TabPageState extends State<TabPage> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              wText(
+                              WText(
                                 text: cart.products[index].title,
                               color: Colors.white,
                                 fontHeight: 15,
@@ -297,7 +295,7 @@ class _TabPageState extends State<TabPage> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              wButton(
+                              WButton(
                                   color: Colors.white,
                                   height: 50,
                                   sizeIcon: 30,
@@ -306,7 +304,7 @@ class _TabPageState extends State<TabPage> {
                                   onTap: () {
                                     Navigator.pushNamed(context, '/product', arguments: cart.products[index]);
                                   }),
-                              wButton(
+                              WButton(
                                   color: Colors.white,
                                   height: 50,
                                   sizeIcon: 30,
@@ -329,7 +327,7 @@ class _TabPageState extends State<TabPage> {
         );
 
       case 2:
-        return wCreditCard();
+        return WCreditCard();
 
       case 3:
         return Column(
@@ -377,7 +375,7 @@ class _TabPageState extends State<TabPage> {
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(5)),
-            child: wTextFormField(
+            child: WTextFormField(
               hint: "O que deseja?",
               icon: Icons.search_rounded,
               sizeIcon: 30,
@@ -386,7 +384,7 @@ class _TabPageState extends State<TabPage> {
             height: 50,
           ),
         ),
-        wButton(
+        WButton(
           width: 50,
           height: 50,
           sizeIcon: 30,

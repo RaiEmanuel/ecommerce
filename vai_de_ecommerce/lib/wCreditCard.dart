@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:vai_de_ecommerce/wButton.dart';
-import 'dart:convert';
+import 'package:vai_de_ecommerce/WButton.dart';
 
 import 'package:http/http.dart' as http;
 
-class wCreditCard extends StatefulWidget {
+class WCreditCard extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return wCreditCardState();
+    return WCreditCardState();
   }
 }
 
-class wCreditCardState extends State<wCreditCard> {
+class WCreditCardState extends State<WCreditCard> {
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
@@ -81,18 +80,24 @@ class wCreditCardState extends State<wCreditCard> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
-                        child: wButton(
+                        child: WButton(
                           text: "FINALIZAR COMPRA",
                           height: 50,
                           width: double.infinity,
                           icon: Icons.shopping_cart,
                           onTap: () async{
                             //http.Response d = fetchAlbum() as http.Response;
-                              http.Response res = await fetchAlbum();
-                              //print(res.body);
-                              Produto p1 = Produto.fromJson(jsonDecode(res.body));
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(content: Text("Compra efetuada com sucesso...")));
+                            //http.Response res = await fetchAlbum();
+                            //print(res.body);
+                            // Produto p1 = Produto.fromJson(jsonDecode(res.body));
+                            ScaffoldMessenger
+                              .of(context)
+                              .showSnackBar(
+                                SnackBar(
+                                  backgroundColor: Colors.greenAccent[700],
+                                  content: Text("Compra efetuada com sucesso!")
+                                )
+                              );
                           },
                         )
                       ),

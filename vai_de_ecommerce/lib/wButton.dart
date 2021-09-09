@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'Product.dart';
-import 'wText.dart';
+import 'WText.dart';
 
-class wButton extends StatelessWidget {
-  String text;
-  double width, height;
-  Product? p;
-  IconData icon;
-  Color color, colorText, colorIcon;
-  double sizeIcon, sizeText;
+class WButton extends StatelessWidget {
+  final String text;
+  final double width, height;
+  final Product? p;
+  final IconData icon;
+  final Color color, colorText, colorIcon;
+  final double sizeIcon, sizeText;
+  final Function() onTap;
 
-  Function() onTap;
-
-  wButton(
-      {Key? key,
-      this.width = 50,
-      this.height = 50,
-      this.text = "",
-      this.icon = Icons.search_rounded,
-      this.p,
-      required this.onTap,
-      this.color = Colors.teal,
-        this.colorText = Colors.white,
-        this.sizeIcon = 30,
-        this.sizeText = 18,
-      this.colorIcon = Colors.white})
-      : super(key: key);
+  WButton({
+    Key? key,
+    this.width = 50,
+    this.height = 50,
+    this.text = "",
+    this.icon = Icons.search_rounded,
+    this.p,
+    required this.onTap,
+    this.color = Colors.teal,
+    this.colorText = Colors.white,
+    this.sizeIcon = 30,
+    this.sizeText = 18,
+    this.colorIcon = Colors.white
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class wButton extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),*/
-            wText(
+            WText(
                 text: text,
                 color: colorText,
               fontHeight: sizeText,

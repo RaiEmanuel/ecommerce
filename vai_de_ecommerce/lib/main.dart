@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'routeProduct.dart';
-import 'routeLogin.dart';
-import 'wTabPage.dart';
-import 'pCartModel.dart';
+import 'RouteProduct.dart';
+import 'RouteLogin.dart';
+import 'WTabPage.dart';
+import 'PCartModel.dart';
 
 void main() => runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context)=>CartModel(),
+          create: (context) => CartModel(),
         )
       ],
       child: //Consumer<CartModel>(
@@ -18,8 +18,8 @@ void main() => runApp(
             initialRoute: '/login',
             routes: {
               '/': (BuildContext context) => TabPage(),
-              '/product': (BuildContext context) => routeProduct(),
-              '/login': (BuildContext context) => routeLogin()
+              '/product': (BuildContext context) => RouteProduct(),
+              '/login': (BuildContext context) => RouteLogin()
             },
           )
        // },

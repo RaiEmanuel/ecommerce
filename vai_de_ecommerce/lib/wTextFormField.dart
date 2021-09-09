@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class wTextFormField extends StatelessWidget {
-  String hint;
-  IconData icon;
-  double sizeIcon;
+class WTextFormField extends StatelessWidget {
+  final String hint;
+  final IconData icon;
+  final double sizeIcon;
   //final String? Function(String?)? validator;
   //TextEditingController _controller = TextEditingController();
-  TextEditingController _controller = TextEditingController();
-  TextInputType keyboardType;
+  final TextEditingController _controller = TextEditingController();
+  final TextInputType keyboardType;
 
-  wTextFormField(
-      {Key? key,
-      this.keyboardType = TextInputType.visiblePassword,
-      this.hint = "Default hint",
-      this.icon = Icons.broken_image_outlined,
-      this.sizeIcon = 15})
-      : super(key: key);
+  WTextFormField({
+    Key? key,
+    this.keyboardType = TextInputType.visiblePassword,
+    this.hint = "Default hint",
+    this.icon = Icons.broken_image_outlined,
+    this.sizeIcon = 15
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,9 @@ class wTextFormField extends StatelessWidget {
             child: Icon(icon),
           )),
       validator: (value) {
-        if (value!.isEmpty || value == null) return "Campo não pode ser vazio!";
+        if (value!.isEmpty) {
+          return "Campo não pode ser vazio!";
+        }
       },
     );
   }

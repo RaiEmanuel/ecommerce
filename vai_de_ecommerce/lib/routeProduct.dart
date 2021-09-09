@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vai_de_ecommerce/Product.dart';
-import 'package:vai_de_ecommerce/wButton.dart';
+import 'package:vai_de_ecommerce/WButton.dart';
 import 'package:provider/provider.dart';
-import 'pCartModel.dart';
+import 'PCartModel.dart';
 
-class routeProduct extends StatelessWidget {
-  const routeProduct({Key? key}) : super(key: key);
+class RouteProduct extends StatelessWidget {
+  const RouteProduct({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class routeProduct extends StatelessWidget {
                     color: Colors.white),
               ),
             ),
-      wButton(
+      WButton(
         width: 200,
         height: 50,
         text: "Comprar",

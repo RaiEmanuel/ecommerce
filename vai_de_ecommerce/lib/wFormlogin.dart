@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'wTextFormField.dart';
-import 'wButton.dart';
+import 'WTextFormField.dart';
 import 'package:lottie/lottie.dart';
 import 'package:line_icons/line_icons.dart';
 
-class wFormLogin extends StatefulWidget {
-  const wFormLogin({Key? key}) : super(key: key);
+class WFormLogin extends StatefulWidget {
+  const WFormLogin({Key? key}) : super(key: key);
 
   @override
-  _wFormLoginState createState() => _wFormLoginState();
+  _WFormLoginState createState() => _WFormLoginState();
 }
 
-class _wFormLoginState extends State<wFormLogin> {
-
+class _WFormLoginState extends State<WFormLogin> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -40,9 +38,9 @@ class _wFormLoginState extends State<wFormLogin> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)
                 ),
-                child: wTextFormField(
-                  hint: "Email",
-                  icon: Icons.email,
+                child: WTextFormField(
+                  hint: "Emails",
+                  icon: Icons.person,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 width: 400,
@@ -56,7 +54,7 @@ class _wFormLoginState extends State<wFormLogin> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)
                 ),
-                child: wTextFormField(hint: "Senha", icon: Icons.password, ),
+                child: WTextFormField(hint: "Senha", icon: Icons.password, ),
                 width: 400,
                 height: 50,
               ),

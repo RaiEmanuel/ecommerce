@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vai_de_ecommerce/wButton.dart';
+import 'package:vai_de_ecommerce/WButton.dart';
 import 'Product.dart';
-import 'wText.dart';
+import 'WText.dart';
 
 Widget wCardProduct(List<Product> products, BuildContext context) {
   return Container(
@@ -30,7 +30,9 @@ class _WCardState extends State<WCard> {
   bool isFavorite = false;
   Product p;
 
-  _WCardState(this.p);
+  _WCardState(this.p) {
+    this.isFavorite = p.favorite;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,25 +78,25 @@ class _WCardState extends State<WCard> {
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        child: wText(
+                        child: WText(
                             text: p.title,
                             color: Colors.blueGrey,
                             fontHeight: 20)),
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        child: wText(
+                        child: WText(
                             text: p.desc,
                             color: Colors.blueGrey,
                             fontHeight: 16)),
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        child: wText(
+                        child: WText(
                             text: "R\$ ${p.value}",
                             color: Colors.blueGrey,
                             fontHeight: 20)),
-                    wButton(
+                    WButton(
                       width: 200,
                       text: "Ver Mais",
                       p: p,

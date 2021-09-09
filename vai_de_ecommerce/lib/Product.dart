@@ -1,7 +1,13 @@
 class Product{
-  String url, title, desc;
-  double value;
+  final String url, title, desc;
+  final double value;
   bool favorite;
 
-  Product({this.url = "url", this.title = "Default", this.desc="Default", this.value=0,this.favorite=false});
+  Product({
+    required this.url,
+    required this.title,
+    required this.desc,
+    this.value = 0,
+    this.favorite = false
+  });
 }
