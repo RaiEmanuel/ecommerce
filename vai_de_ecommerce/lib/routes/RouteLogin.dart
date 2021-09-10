@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vai_de_ecommerce/WFormlogin.dart';
+import 'package:vai_de_ecommerce/widgets/WFormlogin.dart';
 
 class RouteLogin extends StatelessWidget {
   const RouteLogin({Key? key}) : super(key: key);
@@ -16,18 +16,16 @@ class RouteLogin extends StatelessWidget {
               child: Text(
                 "Ecommerce",
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
+                  color: Colors.black,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            WFormLogin()],
+            WFormLogin()
+          ],
         ),
-        
-        decoration: BoxDecoration(
-          color: Colors.grey[300]
-        ),
+        decoration: BoxDecoration(color: Colors.grey[300]),
       ),
     );
   }

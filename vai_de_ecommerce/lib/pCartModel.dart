@@ -2,23 +2,24 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'Product.dart';
 
-class CartModel extends ChangeNotifier{
+class CartModel extends ChangeNotifier {
   final List<Product> _productsList = [];
 
-  UnmodifiableListView<Product> get products => UnmodifiableListView(_productsList);
+  UnmodifiableListView<Product> get products =>
+      UnmodifiableListView(_productsList);
 
   double totalPrice = 0;
 
-  int getQuantity(){
+  int getQuantity() {
     return _productsList.length;
   }
 
-  void setTotalPrice(double totalPrice){
+  void setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
     notifyListeners();
   }
 
-  void remove(Product product){
+  void remove(Product product) {
     _productsList.remove(product);
     totalPrice -= product.value;
     notifyListeners();
@@ -38,5 +39,4 @@ class CartModel extends ChangeNotifier{
     // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
-
 }

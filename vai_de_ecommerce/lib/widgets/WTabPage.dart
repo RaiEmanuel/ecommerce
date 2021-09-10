@@ -2,10 +2,10 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:vai_de_ecommerce/PCartModel.dart';
-import 'package:vai_de_ecommerce/WTextFormField.dart';
-import 'Product.dart';
+import 'package:vai_de_ecommerce/widgets/WTextFormField.dart';
+import '../Product.dart';
 import 'WCardproduct.dart';
-import 'WText.dart';
+import './WText.dart';
 import 'WCreditCard.dart';
 import 'WButton.dart';
 import 'package:http/http.dart' as http;
@@ -208,7 +208,8 @@ class _TabPageState extends State<TabPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       WText(
-                          text: "Total: R\$:${cart.totalPrice.toStringAsFixed(2).replaceAll(".", ",")}",
+                          text:
+                              "Total: R\$:${cart.totalPrice.toStringAsFixed(2).replaceAll(".", ",")}",
                           color: Colors.white,
                           fontHeight: 20),
                       WButton(
@@ -236,91 +237,97 @@ class _TabPageState extends State<TabPage> {
                 ),
               ),
               Expanded(
-                child: cart.getQuantity() == 0 ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Lottie.network("https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json", height: 150),
-                        WText(
-                          topPadding: 15,
-                          text: "Não há itens no carrinho",
-                          color: Colors.teal,
-                          fontHeight: 25,
-                        ),
-                      ],
-                    )
-                ):ListView.builder(
-                  itemCount: cart.getQuantity(),
-                  itemBuilder: (context, index) => Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        /*boxShadow: [
+                child: cart.getQuantity() == 0
+                    ? Center(
+                        child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Lottie.network(
+                              "https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json",
+                              height: 150),
+                          WText(
+                            topPadding: 15,
+                            text: "Não há itens no carrinho",
+                            color: Colors.teal,
+                            fontHeight: 25,
+                          ),
+                        ],
+                      ))
+                    : ListView.builder(
+                        itemCount: cart.getQuantity(),
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              /*boxShadow: [
                           BoxShadow(
                               color: Colors.blueGrey,
                               blurRadius: 8,
                               spreadRadius: 1,
                           ),
                         ],*/
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.teal,
-                      ),
-                      width: double.infinity,
-                      height: 150,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Image.asset(
-                              cart.products[index].url,
-                              width: 120,
-                              fit: BoxFit.contain,
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.teal,
+                            ),
+                            width: double.infinity,
+                            height: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Image.asset(
+                                    cart.products[index].url,
+                                    width: 120,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    WText(
+                                      text: cart.products[index].title,
+                                      color: Colors.white,
+                                      fontHeight: 15,
+                                    ),
+                                    Text("cor"),
+                                    Text("5 unid.")
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    WButton(
+                                        color: Colors.white,
+                                        height: 50,
+                                        sizeIcon: 30,
+                                        icon: Icons.remove_red_eye,
+                                        colorIcon: Colors.teal,
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, '/product',
+                                              arguments: cart.products[index]);
+                                        }),
+                                    WButton(
+                                        color: Colors.white,
+                                        height: 50,
+                                        sizeIcon: 30,
+                                        icon: Icons.delete,
+                                        colorIcon: Colors.red,
+                                        onTap: () {
+                                          cart.remove(cart.products[index]);
+                                        }),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              WText(
-                                text: cart.products[index].title,
-                              color: Colors.white,
-                                fontHeight: 15,
-                              ),
-                              Text("cor"),
-                              Text("5 unid.")
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              WButton(
-                                  color: Colors.white,
-                                  height: 50,
-                                  sizeIcon: 30,
-                                  icon: Icons.remove_red_eye,
-                                  colorIcon: Colors.teal,
-                                  onTap: () {
-                                    Navigator.pushNamed(context, '/product', arguments: cart.products[index]);
-                                  }),
-                              WButton(
-                                  color: Colors.white,
-                                  height: 50,
-                                  sizeIcon: 30,
-                                  icon: Icons.delete,
-                                  colorIcon: Colors.red,
-                                  onTap: () {
-                                    cart.remove(cart.products[index]);
-                                  }),
-                            ],
-                          )
-
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               )
             ],
           )),

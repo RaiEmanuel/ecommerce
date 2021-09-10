@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Product.dart';
-import 'WText.dart';
+import '../Product.dart';
+import './WText.dart';
 
 class WButton extends StatelessWidget {
   final String text;
@@ -23,15 +23,14 @@ class WButton extends StatelessWidget {
     this.colorText = Colors.white,
     this.sizeIcon = 30,
     this.sizeText = 18,
-    this.colorIcon = Colors.white
+    this.colorIcon = Colors.white,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          elevation: 0,
-            fixedSize: Size(width, height), primary: color
+            elevation: 0, fixedSize: Size(width, height), primary: color
             //padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
             ),
         onPressed: onTap,
@@ -47,8 +46,8 @@ class WButton extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),*/
             WText(
-                text: text,
-                color: colorText,
+              text: text,
+              color: colorText,
               fontHeight: sizeText,
             ),
             Icon(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:vai_de_ecommerce/WButton.dart';
+import 'package:vai_de_ecommerce/widgets/WButton.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -76,31 +76,27 @@ class WCreditCardState extends State<WCreditCard> {
                           labelText: 'Nome do titular',
                         ),
                         onCreditCardModelChange: onCreditCardModelChange,
-
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
-                        child: WButton(
-                          text: "FINALIZAR COMPRA",
-                          height: 50,
-                          width: double.infinity,
-                          icon: Icons.shopping_cart,
-                          onTap: () async{
-                            //http.Response d = fetchAlbum() as http.Response;
-                            //http.Response res = await fetchAlbum();
-                            //print(res.body);
-                            // Produto p1 = Produto.fromJson(jsonDecode(res.body));
-                            ScaffoldMessenger
-                              .of(context)
-                              .showSnackBar(
-                                SnackBar(
-                                  backgroundColor: Colors.greenAccent[700],
-                                  content: Text("Compra efetuada com sucesso!")
-                                )
-                              );
-                          },
-                        )
-                      ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 40),
+                          child: WButton(
+                            text: "FINALIZAR COMPRA",
+                            height: 50,
+                            width: double.infinity,
+                            icon: Icons.shopping_cart,
+                            onTap: () async {
+                              //http.Response d = fetchAlbum() as http.Response;
+                              //http.Response res = await fetchAlbum();
+                              //print(res.body);
+                              // Produto p1 = Produto.fromJson(jsonDecode(res.body));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      backgroundColor: Colors.greenAccent[700],
+                                      content: Text(
+                                          "Compra efetuada com sucesso!")));
+                            },
+                          )),
                     ],
                   ),
                 ),
@@ -127,12 +123,16 @@ Future<http.Response> fetchAlbum() {
   return http.get(Uri.parse('https://fakestoreapi.com/products/1'));
 }
 
-class Produto{
+class Produto {
   int id = 1;
   String titulo = "default", categoria = "default";
   double preco = 0.0;
 
   Produto(this.id, this.titulo, this.categoria, this.preco);
 
-  Produto.fromJson(Map<String, dynamic> json): id = json['id'], titulo = json['title'], categoria = json['category'], preco = json['price'];
+  Produto.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        titulo = json['title'],
+        categoria = json['category'],
+        preco = json['price'];
 }

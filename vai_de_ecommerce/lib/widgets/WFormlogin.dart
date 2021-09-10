@@ -19,27 +19,27 @@ class _WFormLoginState extends State<WFormLogin> {
         key: _formKey,
         child: Column(
           children: [
-            Padding(//logo lottie
+            Padding(
+              //logo lottie
               padding: const EdgeInsets.all(0),
               child: Container(
                   width: 250,
                   height: 250,
                   child: Lottie.network(
-                      "https://assets6.lottiefiles.com/packages/lf20_kpDkDy/data.json",
-                      width: 250,
-                      height: 250
-                  )
-              ),
+                    "https://assets6.lottiefiles.com/packages/lf20_kpDkDy/data.json",
+                    width: 250,
+                    height: 250,
+                  )),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 50, right: 50),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: WTextFormField(
-                  hint: "Emails",
+                  hint: "Endereço de e-mail",
                   icon: Icons.person,
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -51,10 +51,14 @@ class _WFormLoginState extends State<WFormLogin> {
               padding: const EdgeInsets.only(left: 50, top: 20, right: 50),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: WTextFormField(hint: "Senha", icon: Icons.password, ),
+                child: WTextFormField(
+                  hint: "Senha",
+                  isPassword: true,
+                  icon: Icons.password,
+                ),
                 width: 400,
                 height: 50,
               ),
@@ -71,33 +75,28 @@ class _WFormLoginState extends State<WFormLogin> {
                       shadowColor: Colors.red,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 24
-                      ),
+                          borderRadius: BorderRadius.circular(10)),
+                      textStyle: TextStyle(fontSize: 24),
                     ),
-                    onPressed: (){
-                      if(_formKey.currentState!.validate()){
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
                         print("Valido");
                         bool valid = _formKey.currentState!.validate();
-                        if(valid)
-                          Navigator.pushNamed(context, '/');
+                        if (valid) Navigator.pushNamed(context, '/');
                       }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                            "LOGIN",
+                          "LOGIN",
                         ),
                         Icon(
                           Icons.login,
                           size: 32,
                         )
                       ],
-                    )
-                  ),
+                    )),
               ),
             ),
             Padding(
@@ -111,8 +110,9 @@ class _WFormLoginState extends State<WFormLogin> {
                       width: 80,
                       height: 80,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       child: Icon(
                         Icons.facebook,
                         color: Colors.teal,
@@ -126,8 +126,9 @@ class _WFormLoginState extends State<WFormLogin> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Icon(
                           LineIcons.instagram,
                           color: Colors.teal,
@@ -138,7 +139,6 @@ class _WFormLoginState extends State<WFormLogin> {
               ),
             )
           ],
-        )
-    );
+        ));
   }
 }

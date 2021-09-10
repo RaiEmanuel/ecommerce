@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:vai_de_ecommerce/WButton.dart';
-import 'Product.dart';
-import 'WText.dart';
+import 'package:vai_de_ecommerce/widgets/WButton.dart';
+import '../Product.dart';
+import './WText.dart';
 
 Widget wCardProduct(List<Product> products, BuildContext context) {
   return Container(
     height: 350,
     width: 500,
-    child:
-        ListView(shrinkWrap: true, scrollDirection: Axis.horizontal, children: [
-      WCard(products[0]),
-      WCard(products[1]),
-      WCard(products[2]),
-      WCard(products[3]),
-    ]),
+    child: ListView(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      children: [
+        WCard(products[0]),
+        WCard(products[1]),
+        WCard(products[2]),
+        WCard(products[3]),
+      ],
+    ),
   );
 }
 
@@ -105,13 +108,6 @@ class _WCardState extends State<WCard> {
                       },
                       color: Colors.teal,
                     ),
-
-                    /*ElevatedButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context, "/product", arguments: p);
-                    },
-                    child: Text("Ver mais")
-                )*/
                   ],
                 ),
               ],

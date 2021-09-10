@@ -1,4 +1,4 @@
-class Product{
+class Product {
   final String url, title, desc;
   final double value;
   bool favorite;
@@ -8,6 +8,6 @@ class Product{
     required this.title,
     required this.desc,
     this.value = 0,
-    this.favorite = false
+    this.favorite = false,
   });
 }

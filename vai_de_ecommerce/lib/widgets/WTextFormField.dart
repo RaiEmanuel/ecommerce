@@ -8,13 +8,15 @@ class WTextFormField extends StatelessWidget {
   //TextEditingController _controller = TextEditingController();
   final TextEditingController _controller = TextEditingController();
   final TextInputType keyboardType;
+  final bool isPassword;
 
   WTextFormField({
     Key? key,
     this.keyboardType = TextInputType.visiblePassword,
     this.hint = "Default hint",
     this.icon = Icons.broken_image_outlined,
-    this.sizeIcon = 15
+    this.sizeIcon = 15,
+    this.isPassword = false,
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class WTextFormField extends StatelessWidget {
       controller: _controller,
       cursorColor: Colors.black,
       keyboardType: keyboardType,
+      obscureText: isPassword,
       decoration: new InputDecoration(
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
